@@ -11,6 +11,7 @@ server.use(multer());
 //服务器的webhook配置
 const exec = require('child_process').execSync;
 server.post('/webhook', (req, res) => {
+    console.log(req.body,'//////////////////////////////////////////')
     console.log(req.body['token'],1)
     console.log(req.headers['x-coding-event'],2)
     if ('hooks' === req.body['token']) {
