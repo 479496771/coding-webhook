@@ -11,9 +11,10 @@ server.use(multer());
 //服务器的webhook配置
 const exec = require('child_process').execSync;
 server.post('/webhook', (req, res) => {
-    console.log(req.body['token'])
-    console.log(req.headers['x-coding-event'])
+    console.log(req.body['token'],1)
+    console.log(req.headers['x-coding-event'],2)
     if ('hooks' === req.body['token']) {
+        console.log(3)
         exec('git pull', {'cwd': '/var/www/webserver'},
             (error, stdout, stderr) => {
                 console.log('stdout========================\n' + stdout + '====================================');
@@ -42,6 +43,7 @@ server.post('/webhook', (req, res) => {
                 }
             })
     } else if ('myadmin' === req.body['token']) {
+        console.log(4)
         exec('git pull', {'cwd': '/var/www/myadmin'},
             (error, stdout, stderr) => {
                 console.log('stdout========================\n' + stdout + '====================================');
