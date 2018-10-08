@@ -17,7 +17,9 @@ const verifyWebhook = (req) => {
     // (hmac = hash-based message authentication code)
     const theirSignature = req.headers['x-coding-signature'];
     console.log(theirSignature,'头部签名');
+    console.log(req.body,'req.body不转字符串')
     const payload = JSON.stringify(req.body);
+    console.log(payload,'req.body转化成字符串')
     // const secret = process.env.SECRET_TOKEN;
     const secret = 'myadmin';
     console.log(secret,'环境变量')
