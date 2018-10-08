@@ -9,10 +9,6 @@ server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json()); // for parsing application/json
 server.use(multer());
 
-
-const secretss = process.env;
-console.log(secretss,666666)
-
 const verifyWebhook = (req) => {
     if (!req.headers['user-agent'].includes('Coding.net Hook')) {
         return false;
@@ -20,14 +16,13 @@ const verifyWebhook = (req) => {
     // Compare their hmac signature to our hmac signature
     // (hmac = hash-based message authentication code)
     const theirSignature = req.headers['x-coding-signature'];
-    console.log(theirSignature,1111111111111);
+    console.log(theirSignature,'头部签名');
     const payload = JSON.stringify(req.body);
-    console.log(payload,2222222222222222)
     const secret = process.env.SECRET_TOKEN;
-    console.log(secret,3333333333333333)
+    console.log(secret,'环境变量')
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
-    console.log(ourSignature,44444444444444444444)
-    console.log(crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature)),55555555555555555555)
+    console.log(ourSignature,'自己组合的签名')
+    console.log(crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature)),'最终结果')
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
