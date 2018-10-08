@@ -18,7 +18,8 @@ const verifyWebhook = (req) => {
     const theirSignature = req.headers['x-coding-signature'];
     console.log(theirSignature,'头部签名');
     console.log(req.body,'req.body不转字符串')
-    const payload = JSON.stringify(req.body);
+    // const payload = JSON.stringify(req.body);
+    const payload = req.body;
     console.log(payload,'req.body转化成字符串')
     // const secret = process.env.SECRET_TOKEN;
     const secret = 'myadmin';
