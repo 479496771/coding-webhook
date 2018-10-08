@@ -10,7 +10,7 @@ server.use(bodyParser.json()); // for parsing application/json
 server.use(multer());
 
 
-const secretss = process.env.SECRET_TOKEN;
+const secretss = process.env;
 console.log(secretss,666666)
 
 const verifyWebhook = (req) => {
