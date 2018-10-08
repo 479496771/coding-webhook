@@ -20,7 +20,7 @@ const verifyWebhook = (req) => {
     const payload = JSON.stringify(req.body);
     const secret = process.env.SECRET_TOKEN;
     console.log(secret,'环境变量')
-    const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
+    const ourSignature = `sha1=${crypto.createHmac('sha1', 'myadmin').update(payload).digest('hex')}`;
     console.log(ourSignature,'自己组合的签名')
     console.log(crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature)),'最终结果')
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
