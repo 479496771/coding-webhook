@@ -17,16 +17,12 @@ const verifyWebhook = (req) => {
     // (hmac = hash-based message authentication code)
     const theirSignature = req.headers['x-coding-signature'];
     console.log(theirSignature,'头部签名');
-    console.log(typeof(req.body),'req.body不转字符串')
-    // const payload = JSON.stringify(req.body);
-    const payload = req.body;
-    console.log(payload,'req.body转化成字符串')
+    const payload = JSON.stringify(req.body);
     // const secret = process.env.SECRET_TOKEN;
     const secret = 'myadmin';
     console.log(secret,'环境变量')
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
     console.log(ourSignature,'自己组合的签名')
-    console.log(crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature)),'最终结果')
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
