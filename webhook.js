@@ -1,4 +1,4 @@
-SECRET_TOKEN=myadmin node webhook.js;
+SECRET_TOKEN="myadmin node webhook.js";
 const express = require('express');
 const multer = require('multer');
 const bodyParser = require('body-parser'); //能接收post数据
