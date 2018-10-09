@@ -11,7 +11,7 @@ const verifyWebhook = (req) => {
     const theirSignature = req.headers['x-coding-signature'];
     console.log(theirSignature);
     const payload = JSON.stringify(req.body);
-    const secret = 'myadmin';
+    const secret = process.env.SECRET_TOKEN;
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
     console.log(crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature)))
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
