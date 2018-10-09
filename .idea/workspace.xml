@@ -36,14 +36,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="460" />
+          <entry key="js" value="471" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="460" />
+          <entry key="JavaScript" value="471" />
         </counts>
       </usages-collector>
     </session>
@@ -53,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
-              <caret line="98" column="20" selection-start-line="98" selection-start-column="7" selection-end-line="98" selection-end-column="20" />
+            <state relative-caret-position="306">
+              <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
               <folding>
                 <element signature="e#1456#2688#0" />
                 <element signature="e#2715#3943#0" />
@@ -173,12 +173,12 @@
       <option name="presentableId" value="Default" />
       <updated>1538293000742</updated>
       <workItem from="1538293001899" duration="5359000" />
-      <workItem from="1538961013996" duration="12553000" />
+      <workItem from="1538961013996" duration="13372000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17912000" />
+    <option name="totallyTimeSpent" value="18731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -199,7 +199,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="调试" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.1324647" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47557002" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -224,8 +224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="98" column="20" selection-start-line="98" selection-start-column="7" selection-end-line="98" selection-end-column="20" />
+        <state relative-caret-position="306">
+          <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
           <folding>
             <element signature="e#1456#2688#0" />
             <element signature="e#2715#3943#0" />
