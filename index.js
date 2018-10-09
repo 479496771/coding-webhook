@@ -19,7 +19,7 @@ const verifyWebhook = (req) => {
     console.log(theirSignature,'头部签名');
     const payload = JSON.stringify(req.body);
     // const secret = process.env.SECRET_TOKEN;
-    const secret = 'myadmin';
+    const secret = 'myadmin node index.js';
     console.log(secret,'环境变量')
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
     console.log(ourSignature,'自己组合的签名')
