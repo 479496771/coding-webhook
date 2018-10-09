@@ -10,9 +10,9 @@ const verifyWebhook = (req) => {
     console.log(theirSignature);
     const payload = req.body;
     const secret = process.env.MYADMIN;
+    console.log(secret)
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
     console.log(ourSignature)
-    console.log(secret)
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
