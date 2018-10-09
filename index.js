@@ -9,7 +9,7 @@ const verifyWebhook = (req) => {
     const theirSignature = req.headers['x-coding-signature'];
     console.log(theirSignature);
     const payload = req.body;
-    const secret = process.env.SECRET_TOKEN;
+    const secret = process.env.MYADMIN;
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
     console.log(ourSignature)
     console.log(secret)
