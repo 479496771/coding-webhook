@@ -13,6 +13,7 @@ const verifyWebhook = (req) => {
     const payload = JSON.stringify(req.body);
     const secret = 'myadmin node index.js';
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
+    console.log(ourSignature)
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
