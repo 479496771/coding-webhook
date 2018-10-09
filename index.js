@@ -6,20 +6,18 @@ const verifyWebhook = (req) => {
     if (!req.headers['user-agent'].includes('Coding.net Hook')) {
         return false;
     }
-    // Compare their hmac signature to our hmac signature
-    // (hmac = hash-based message authentication code)
     const theirSignature = req.headers['x-coding-signature'];
     console.log(theirSignature);
-    const payload = JSON.stringify(req.body);
-    // const secret = process.env.SECRET_TOKEN;
-    const secret = '123';
+    const payload = req.body;
+    const secret = process.env.SECRET_TOKEN;
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
+    console.log(ourSignature)
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.text({ type: '*/*' }));
 
 const notAuthorized = (req, res) => {
     console.log('Someone who is NOT Coding is calling, redirect them');
