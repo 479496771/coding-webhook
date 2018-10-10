@@ -84,6 +84,8 @@ const myAdminPull = () =>{
                 console.log('构建成功')
             }
         })
+
+    console.log('完成')
 }
 
 
@@ -98,6 +100,8 @@ server.post('/webhook', (req, res) => {
         hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
+    }else {
+        res.status('400').json({ state: 'error' });
     }
 
 });
