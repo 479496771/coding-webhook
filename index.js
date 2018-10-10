@@ -25,7 +25,7 @@ const notAuthorized = (req, res) => {
 };
 
 
-const myAdminPull = () =>{
+const myAdminPull = (res) =>{
     exec('git pull', {'cwd': '/var/www/myadmin'},
         (error, stdout, stderr) => {
             console.log('stdout========================\n' + stdout + '====================================');
@@ -57,14 +57,14 @@ const myAdminPull = () =>{
         })
 
     console.log('完成')
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Thanks Coding <3');
 }
 
 app.post('/webhook', (req, res) => {
     if (verifyWebhook(req,'myadmin')) {
         // Coding calling
-        myAdminPull();
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Thanks Coding <3');
+        myAdminPull(res);
     } else {
         // Someone else calling
         notAuthorized(req, res);
