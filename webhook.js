@@ -92,9 +92,10 @@ const myAdminPull = () =>{
 const exec = require('child_process').execSync;
 server.post('/webhook', (req, res) => {
     if(verifyWebhook(req,'myadmin')){
-        myAdminPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
+        myAdminPull()
+
     }else if(verifyWebhook(req,'webserver')){
         hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
