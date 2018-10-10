@@ -26,7 +26,37 @@ const notAuthorized = (req, res) => {
 
 
 const myAdminPull = (res) =>{
+    exec('git pull', {'cwd': '/var/www/myadmin'},
+        (error, stdout, stderr) => {
+            console.log('stdout========================\n' + stdout + '====================================');
+            console.log('stderr========================\n' + stderr + '====================================');
+            if (error !== null) {
+                console.log('pull失败！')
+            } else {
+                console.log('pull成功！')
+            }
+            console.log(error,'pull成功')
+        });
+    exec('npm install',{'cwd':'/var/www/myadmin'},
+        (error,stdout,stdin) =>{
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('install')
+            }
+            console.log(error,'install成功')
+        })
+    exec('npm run build',{'cwd':'/var/www/myadmin'},
+        (error,stdout,stdin) =>{
+            console.log(error,'构建成功')
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('构建成功')
+            }
+        })
 
+    console.log('完成')
 }
 
 app.post('/webhook', (req, res) => {
@@ -35,37 +65,6 @@ app.post('/webhook', (req, res) => {
         // myAdminPull(res);
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
-        exec('git pull', {'cwd': '/var/www/myadmin'},
-            (error, stdout, stderr) => {
-                console.log('stdout========================\n' + stdout + '====================================');
-                console.log('stderr========================\n' + stderr + '====================================');
-                if (error !== null) {
-                    console.log('pull失败！')
-                } else {
-                    console.log('pull成功！')
-                }
-                console.log(error,'pull成功')
-            });
-        exec('npm install',{'cwd':'/var/www/myadmin'},
-            (error,stdout,stdin) =>{
-                if (error !== null){
-                    console.log('失败')
-                }else{
-                    console.log('install')
-                }
-                console.log(error,'install成功')
-            })
-        exec('npm run build',{'cwd':'/var/www/myadmin'},
-            (error,stdout,stdin) =>{
-                console.log(error,'构建成功')
-                if (error !== null){
-                    console.log('失败')
-                }else{
-                    console.log('构建成功')
-                }
-            })
-
-        console.log('完成')
     } else {
         // Someone else calling
         notAuthorized(req, res);
