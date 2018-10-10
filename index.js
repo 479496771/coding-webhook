@@ -26,6 +26,8 @@ const notAuthorized = (req, res) => {
 
 
 const myAdminPull = (res) =>{
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Thanks Coding <3');
     exec('git pull', {'cwd': '/var/www/myadmin'},
         (error, stdout, stderr) => {
             console.log('stdout========================\n' + stdout + '====================================');
@@ -57,8 +59,6 @@ const myAdminPull = (res) =>{
         })
 
     console.log('完成')
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Thanks Coding <3');
 }
 
 app.post('/webhook', (req, res) => {
