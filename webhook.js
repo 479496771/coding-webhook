@@ -59,10 +59,9 @@ const myAdminPull = () =>{
             console.log('stdout========================\n' + stdout + '====================================');
             console.log('stderr========================\n' + stderr + '====================================');
             if (error !== null) {
-                res.send('<pre>fail!!!\n' + stdout + error + '</pre>');
+                console.log('pull失败！')
             } else {
-                res.send('<pre>done!!!\n' + stdout + '</pre>');
-                console.log('push成功！')
+                console.log('pull成功！')
             }
             console.log(error,'pull成功')
         });
@@ -94,8 +93,7 @@ const exec = require('child_process').execSync;
 server.post('/webhook', (req, res) => {
     if(verifyWebhook(req,'myadmin')){
         myAdminPull()
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Thanks Coding <3');
+        res.status('200').json({ state: 'ok' });
     }else if(verifyWebhook(req,'webserver')){
         hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
