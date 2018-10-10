@@ -92,8 +92,10 @@ const exec = require('child_process').execSync;
 server.post('/webhook', (req, res) => {
     if(verifyWebhook(req,'myadmin')){
         myAdminPull()
+        res.status('200').json({ state: 'ok' });
     }else if(verifyWebhook(req,'webserver')){
         hooksPull()
+        res.status('200').json({ state: 'ok' });
     }
 
 });
