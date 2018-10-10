@@ -2,17 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
-const verifyWebhook = (req) => {
+const verifyWebhook = (req,x) => {
     if (!req.headers['user-agent'].includes('Coding.net Hook')) {
         return false;
     }
     const theirSignature = req.headers['x-coding-signature'];
-    console.log(theirSignature);
     const payload = req.body;
-    const secret = 'myadmin';
+    const secret = x;
     console.log(secret)
     const ourSignature = `sha1=${crypto.createHmac('sha1', secret).update(payload).digest('hex')}`;
-    console.log(ourSignature)
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
@@ -25,15 +23,45 @@ const notAuthorized = (req, res) => {
     res.redirect(301, '/'); // Redirect to domain root
 };
 
-const authorizationSuccessful = () => {
-    console.log('Coding is calling, do something here');
-    // TODO: Do something here
-};
+
+const myAdminPull = () =>{
+    exec('git pull', {'cwd': '/var/www/myadmin'},
+        (error, stdout, stderr) => {
+            console.log('stdout========================\n' + stdout + '====================================');
+            console.log('stderr========================\n' + stderr + '====================================');
+            if (error !== null) {
+                console.log('pull失败！')
+            } else {
+                console.log('pull成功！')
+            }
+            console.log(error,'pull成功')
+        });
+    exec('npm install',{'cwd':'/var/www/myadmin'},
+        (error,stdout,stdin) =>{
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('install')
+            }
+            console.log(error,'install成功')
+        })
+    exec('npm run build',{'cwd':'/var/www/myadmin'},
+        (error,stdout,stdin) =>{
+            console.log(error,'构建成功')
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('构建成功')
+            }
+        })
+
+    console.log('完成')
+}
 
 app.post('/webhook', (req, res) => {
-    if (verifyWebhook(req)) {
+    if (verifyWebhook(req,'myadmin')) {
         // Coding calling
-        authorizationSuccessful();
+        myAdminPull();
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
     } else {
@@ -46,4 +74,4 @@ app.all('*', notAuthorized); // Only webhook requests allowed at this address
 
 app.listen(6666);
 
-console.log('Webhook service running at http://localhost:3000');
+
