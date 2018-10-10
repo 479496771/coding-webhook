@@ -64,17 +64,20 @@ const myAdminPull = () =>{
                 res.send('<pre>done!!!\n' + stdout + '</pre>');
                 console.log('push成功！')
             }
+            console.log(error,'pull成功')
         });
     exec('npm install',{'cwd':'/var/www/myadmin'},
         (error,stdout,stdin) =>{
             if (error !== null){
                 console.log('失败')
             }else{
-                console.log('构建成功')
+                console.log('install')
             }
+            console.log(error,'install成功')
         })
     exec('npm run build',{'cwd':'/var/www/myadmin'},
         (error,stdout,stdin) =>{
+        console.log(error,'构建成功')
             if (error !== null){
                 console.log('失败')
             }else{
