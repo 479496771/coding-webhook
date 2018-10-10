@@ -35,7 +35,7 @@ const hooksPull = () =>{
                 console.log('push成功！')
             }
         });
-    exec('npm install',{'cwd':'/var/www/webserver'},
+    exec('yarn install',{'cwd':'/var/www/webserver'},
         (error,stdout,stdin) =>{
             if (error !== null){
                 console.log('失败')
@@ -65,7 +65,7 @@ const myAdminPull = () =>{
                 console.log('push成功！')
             }
         });
-    exec('npm install',{'cwd':'/var/www/myadmin'},
+    exec('yarn install',{'cwd':'/var/www/myadmin'},
         (error,stdout,stdin) =>{
             if (error !== null){
                 console.log('失败')
