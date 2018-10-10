@@ -63,8 +63,7 @@ app.post('/webhook', (req, res) => {
     if (verifyWebhook(req,'myadmin')) {
         // Coding calling
         // myAdminPull(res);
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Thanks Coding <3');
+
     } else {
         // Someone else calling
         notAuthorized(req, res);
