@@ -94,8 +94,7 @@ server.post('/webhook', (req, res) => {
     if(verifyWebhook(req,'myadmin')){
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
-        // myAdminPull()
-
+        myAdminPull()
     }else if(verifyWebhook(req,'webserver')){
         hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
