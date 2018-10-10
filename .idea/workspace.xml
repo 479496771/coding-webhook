@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8c7e80e-e906-4a8b-9cbe-a59ae98a7e52" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webhook.js" beforeDir="false" afterPath="$PROJECT_DIR$/webhook.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -27,12 +26,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
+          <entry key="html" value="1" />
           <entry key="js" value="3" />
           <entry key="json" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="3" />
           <entry key="PLAIN_TEXT" value="1" />
@@ -40,14 +41,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="785" />
+          <entry key="html" value="19" />
+          <entry key="js" value="816" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="HTML" value="19" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="785" />
+          <entry key="JavaScript" value="816" />
         </counts>
       </usages-collector>
     </session>
@@ -57,13 +60,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webhook.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="96" column="21" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="21" />
+            <state relative-caret-position="348">
+              <caret line="135" column="39" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="39" />
               <folding>
                 <element signature="e#1585#1756#0" />
-                <element signature="e#1852#2023#0" />
                 <element signature="e#2356#3584#0" />
+                <element signature="e#3102#4180#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -120,6 +132,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/../../inde.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/../../index.html" />
         <option value="$PROJECT_DIR$/webhook.js" />
       </list>
     </option>
@@ -198,12 +211,12 @@
       <updated>1538293000742</updated>
       <workItem from="1538293001899" duration="5359000" />
       <workItem from="1538961013996" duration="17855000" />
-      <workItem from="1539069057068" duration="10923000" />
+      <workItem from="1539069057068" duration="13918000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34137000" />
+    <option name="totallyTimeSpent" value="37132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -264,14 +277,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webhook.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="96" column="21" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="21" />
+        <state relative-caret-position="348">
+          <caret line="135" column="39" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="39" />
           <folding>
             <element signature="e#1585#1756#0" />
-            <element signature="e#1852#2023#0" />
             <element signature="e#2356#3584#0" />
+            <element signature="e#3102#4180#0" />
           </folding>
         </state>
       </provider>

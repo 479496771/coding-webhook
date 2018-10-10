@@ -88,6 +88,40 @@ const myAdminPull = () =>{
     console.log('完成')
 }
 
+const myAdminApi = () =>{
+    exec('git pull', {'cwd': '/var/www/myadminAPI'},
+        (error, stdout, stderr) => {
+            console.log('stdout========================\n' + stdout + '====================================');
+            console.log('stderr========================\n' + stderr + '====================================');
+            if (error !== null) {
+                console.log('pull失败！')
+            } else {
+                console.log('pull成功！')
+            }
+            console.log(error,'pull成功')
+        });
+    exec('npm install',{'cwd':'/var/www/myadminAPI'},
+        (error,stdout,stdin) =>{
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('install')
+            }
+            console.log(error,'install成功')
+        })
+    exec('node index',{'cwd':'/var/www/myadminAPI'},
+        (error,stdout,stdin) =>{
+            console.log(error,'构建成功')
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('构建成功')
+            }
+        })
+
+    console.log('完成')
+}
+
 
 //服务器的webhook配置
 server.post('/webhook', (req, res) => {
@@ -96,6 +130,10 @@ server.post('/webhook', (req, res) => {
         res.end('Thanks Coding <3');
         myAdminPull()
     }else if(verifyWebhook(req,'webserver')){
+        hooksPull()
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Thanks Coding <3');
+    }else if(myAdminApi(req,'myadminAPI')){
         hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
