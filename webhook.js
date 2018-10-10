@@ -3,6 +3,7 @@ const multer = require('multer');
 const bodyParser = require('body-parser'); //能接收post数据
 const crypto = require('crypto');
 const server = express();
+const exec = require('child_process').execSync;
 
 
 server.use(bodyParser.urlencoded({extended: true}));
@@ -89,7 +90,6 @@ const myAdminPull = () =>{
 
 
 //服务器的webhook配置
-const exec = require('child_process').execSync;
 server.post('/webhook', (req, res) => {
     if(verifyWebhook(req,'myadmin')){
         res.writeHead(200, { 'Content-Type': 'text/plain' });

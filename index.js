@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
+const exec = require('child_process').execSync;
 
 const verifyWebhook = (req,x) => {
     if (!req.headers['user-agent'].includes('Coding.net Hook')) {
