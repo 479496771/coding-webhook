@@ -109,6 +109,15 @@ const myAdminApi = () =>{
             }
             console.log(error,'install成功')
         })
+    exec('sudo fuser -k -n tcp 8888',{'cwd':'/var/www/myadminAPI'},
+        (error,stdout,stdin) =>{
+            console.log(error,'构建成功')
+            if (error !== null){
+                console.log('失败')
+            }else{
+                console.log('构建成功')
+            }
+        })    
     exec('node index',{'cwd':'/var/www/myadminAPI'},
         (error,stdout,stdin) =>{
             console.log(error,'构建成功')
