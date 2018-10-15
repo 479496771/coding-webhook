@@ -53,10 +53,9 @@ const myAdminApi = () =>{
 server.post('/webhookadminAPI', (req, res) => {
     console.log('接口调用成功')
     if(myAdminApi(req,'webhookadminAPI')){
-        console.log('进入myadminAPI')
-        hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
+        hooksPull()
     }else {
         res.status('400').json({ state: 'error' });
     }
