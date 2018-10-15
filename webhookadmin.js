@@ -24,35 +24,35 @@ const verifyWebhook = (req,hook) => {
     return crypto.timingSafeEqual(Buffer.from(theirSignature), Buffer.from(ourSignature));
 };
 
-const hooksPull = () =>{
-    exec('git pull', {'cwd': '/var/www/webserver'},
-        (error, stdout, stderr) => {
-            console.log('stdout========================\n' + stdout + '====================================');
-            console.log('stderr========================\n' + stderr + '====================================');
-            if (error !== null) {
-                res.send('<pre>fail!!!\n' + stdout + error + '</pre>');
-            } else {
-                res.send('<pre>done!!!\n' + stdout + '</pre>');
-                console.log('push成功！')
-            }
-        });
-    exec('npm install',{'cwd':'/var/www/webserver'},
-        (error,stdout,stdin) =>{
-            if (error !== null){
-                console.log('失败')
-            }else{
-                console.log('构建成功')
-            }
-        })
-    exec('npm run build',{'cwd':'/var/www/webserver'},
-        (error,stdout,stdin) =>{
-            if (error !== null){
-                console.log('失败')
-            }else{
-                console.log('构建成功')
-            }
-        })
-}
+// const hooksPull = () =>{
+//     exec('git pull', {'cwd': '/var/www/webserver'},
+//         (error, stdout, stderr) => {
+//             console.log('stdout========================\n' + stdout + '====================================');
+//             console.log('stderr========================\n' + stderr + '====================================');
+//             if (error !== null) {
+//                 res.send('<pre>fail!!!\n' + stdout + error + '</pre>');
+//             } else {
+//                 res.send('<pre>done!!!\n' + stdout + '</pre>');
+//                 console.log('push成功！')
+//             }
+//         });
+//     exec('npm install',{'cwd':'/var/www/webserver'},
+//         (error,stdout,stdin) =>{
+//             if (error !== null){
+//                 console.log('失败')
+//             }else{
+//                 console.log('构建成功')
+//             }
+//         })
+//     exec('npm run build',{'cwd':'/var/www/webserver'},
+//         (error,stdout,stdin) =>{
+//             if (error !== null){
+//                 console.log('失败')
+//             }else{
+//                 console.log('构建成功')
+//             }
+//         })
+// }
 
 const myAdminPull = () =>{
     exec('git pull', {'cwd': '/var/www/myadmin'},
@@ -88,51 +88,22 @@ const myAdminPull = () =>{
     console.log('完成')
 }
 
-const myAdminApi = () =>{
-    exec('git pull', {'cwd': '/var/www/myadminAPI'},
-        (error, stdout, stderr) => {
-            console.log('stdout========================\n' + stdout + '====================================');
-            console.log('stderr========================\n' + stderr + '====================================');
-            if (error !== null) {
-                console.log('pull失败！')
-            } else {
-                console.log('pull成功！')
-            }
-            console.log(error,'pull成功')
-        });
-    exec('npm install',{'cwd':'/var/www/myadminAPI'},
-        (error,stdout,stdin) =>{
-            if (error !== null){
-                console.log('失败')
-            }else{
-                console.log('install')
-            }
-            console.log(error,'install成功')
-        })
-    console.log('myadmin后台更新完成')
-}
-
 
 //服务器的webhook配置
 server.post('/webhook', (req, res) => {
     console.log('接口调用成功')
-    if(verifyWebhook(req,'myadmin')){
+    if(verifyWebhook(req,'webhookadmin ')){
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
         myAdminPull()
-    }else if(verifyWebhook(req,'webserver')){
-        hooksPull()
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Thanks Coding <3');
-    }else if(myAdminApi(req,'myadminAPI')){
-        console.log('进入myadminAPI')
-        hooksPull()
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Thanks Coding <3');
     }else {
         res.status('400').json({ state: 'error' });
     }
-
+    // if(verifyWebhook(req,'webserver')){
+    //     hooksPull()
+    //     res.writeHead(200, { 'Content-Type': 'text/plain' });
+    //     res.end('Thanks Coding <3');
+    // }
 });
 
 server.listen(6666);
