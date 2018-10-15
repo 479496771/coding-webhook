@@ -115,6 +115,7 @@ const myAdminApi = () =>{
 
 //服务器的webhook配置
 server.post('/webhook', (req, res) => {
+    console.log('接口调用成功')
     if(verifyWebhook(req,'myadmin')){
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
@@ -124,6 +125,7 @@ server.post('/webhook', (req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
     }else if(myAdminApi(req,'myadminAPI')){
+        console.log('进入myadminAPI')
         hooksPull()
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
