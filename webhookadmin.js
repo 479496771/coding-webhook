@@ -92,7 +92,7 @@ const myAdminPull = () =>{
 //服务器的webhook配置
 server.post('/webhook', (req, res) => {
     console.log('接口调用成功')
-    if(verifyWebhook(req,'webhookadmin ')){
+    if(verifyWebhook(req,'webhookadmin')){
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Thanks Coding <3');
         myAdminPull()
