@@ -50,7 +50,7 @@ const myAdminApi = () =>{
 
 
 //服务器的webhook配置
-server.post('/webhook', (req, res) => {
+server.post('/webhookadminAPI', (req, res) => {
     console.log('接口调用成功')
     if(myAdminApi(req,'webhookadminAPI')){
         console.log('进入myadminAPI')
